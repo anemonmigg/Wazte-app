@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Wazte</string>
+    <string name="field_cannot_be_empty"><i>*Field cannot be left empty.</i></string>
+    <string name="login_username_not_found"><i>*Username does not exist.</i></string>
+    <string name="login_password_incorrect"><i>*Password is incorrect.</i></string>
+    <string name="signup_link"><u>Signup</u></string>
+</resources>
