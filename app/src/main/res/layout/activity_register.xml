@@ -70,7 +70,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:drawableLeft="@drawable/user"
-                android:hint="Username" />
+                android:hint="Username"
+                android:singleLine="true"/>
 
             <TextView
                 android:id="@+id/tvSignupUsernameError"
@@ -91,7 +92,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:drawableLeft="@drawable/phone"
-                android:hint="Phone Number" />
+                android:hint="Phone Number"
+                android:inputType="phone"
+                android:singleLine="true"/>
 
             <TextView
                 android:id="@+id/tvSignupPhoneError"
@@ -114,7 +117,8 @@
                 android:layout_height="wrap_content"
                 android:drawableLeft="@drawable/lock"
                 android:hint="Password"
-                android:inputType="textPassword" />
+                android:inputType="textPassword"
+                android:singleLine="true"/>
 
             <TextView
                 android:id="@+id/tvSignupPasswordError"
@@ -136,7 +140,8 @@
                 android:layout_height="wrap_content"
                 android:drawableLeft="@drawable/lock"
                 android:hint="Confirm Password"
-                android:inputType="textPassword" />
+                android:inputType="textPassword"
+                android:singleLine="true"/>
 
             <TextView
                 android:id="@+id/tvSignupConfirmError"

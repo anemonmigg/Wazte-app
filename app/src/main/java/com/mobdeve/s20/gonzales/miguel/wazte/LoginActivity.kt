@@ -10,6 +10,8 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import com.google.firebase.Firebase
+import com.google.firebase.firestore.firestore
 
 class LoginActivity : AppCompatActivity() {
     lateinit var etLoginUsername:EditText
@@ -37,6 +39,7 @@ class LoginActivity : AppCompatActivity() {
         btnLogin = findViewById(R.id.btnLogin)
         btnLogin.setOnClickListener {
             // Move to MainActivity
+
             val intent = Intent(this, MainActivity::class.java)
             startActivity(intent)
         }
