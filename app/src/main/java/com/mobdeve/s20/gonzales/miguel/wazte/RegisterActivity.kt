@@ -7,6 +7,7 @@ import android.view.View
 import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
+import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
@@ -131,24 +132,24 @@ class RegisterActivity : AppCompatActivity() {
             }
 
             // Write data to DB
-            val thread = Thread(Runnable {
-                val db = Firebase.firestore
-                val user = hashMapOf(
-                    "name" to inputs[0].text.toString(),
-                    "phone_number" to inputs[1].text.toString(),
-                    "password" to inputs[2].text.toString()
-                )
-                db.collection("users")
-                    .add(user)
-                    .addOnSuccessListener { documentReference ->
-                        Log.d(TAG, "DocumentSnapshot added with ID: ${documentReference.id}")
-                    }
-                    .addOnFailureListener { e ->
-                        Log.w(TAG, "Error adding document", e)
-                    }
-            })
+            val db = Firebase.firestore
+            val user = hashMapOf(
+                "name" to inputs[0].text.toString(),
+                "phone_number" to inputs[1].text.toString(),
+                "password" to inputs[2].text.toString()
+            )
+            db.collection("users")
+                .add(user)
+                .addOnSuccessListener { documentReference ->
+                    Log.d(TAG, "DocumentSnapshot added with ID: ${documentReference.id}")
+                    Toast.makeText(this, "Data added", Toast.LENGTH_LONG).show()
+                }
+                .addOnFailureListener { e ->
+                    Log.w(TAG, "Error adding document", e)
+                    Toast.makeText(this, "Data not added", Toast.LENGTH_LONG).show()
+                }
             // Move to login activity
-            finish()
+            // finish()
         }
     }
 }
