@@ -76,7 +76,7 @@
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
                 <EditText
-                    android:id="@+id/etLoginusername"
+                    android:id="@+id/etLoginUsername"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:drawableLeft="@drawable/user"
@@ -98,6 +98,7 @@
                     android:id="@+id/etLoginPassword"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:inputType="textPassword"
                     android:drawableLeft="@drawable/lock"
                     android:hint="Password"
                     style="@style/FormInput" />
@@ -115,7 +116,9 @@
             android:layout_height="wrap_content"
             android:orientation="vertical"
             android:paddingHorizontal="40dp"
-            android:layout_marginTop="45dp">
+            android:layout_marginTop="45dp"
+            android:divider="@drawable/divider_mini"
+            android:showDividers="middle">
 
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/btnLogin"

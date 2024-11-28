@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "137231505336",
+    "project_id": "wazte-app",
+    "storage_bucket": "wazte-app.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:137231505336:android:49646812baf9349b62614d",
+        "android_client_info": {
+          "package_name": "com.mobdeve.s20.miguel.wazte"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCBLsljlEhSCRkI_TGiyJ6ABnew8CoQnDE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

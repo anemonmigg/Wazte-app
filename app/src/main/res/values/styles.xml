@@ -7,19 +7,29 @@
         <item name="android:fontFamily">@font/wixmadefortext_regular</item>
         <item name="android:padding">5dp</item>
         <item name="android:textColorHint">@color/color_main</item>
+        <item name="android:textColor">@color/black</item>
         <item name="android:textSize">18sp</item>
     </style>
 
     <style name="FormInputError" parent="Widget.AppCompat.TextView">
         <item name="android:textColor">@color/input_error</item>
         <item name="android:fontFamily">@font/wixmadefortext_regular</item>
+        <item name="android:textSize">15sp</item>
     </style>
 
     <style name="LoginButton" parent="Widget.AppCompat.Button">
         <item name="android:background">@drawable/login_btn</item>
         <item name="android:textColor">@color/white</item>
         <item name="android:fontFamily">@font/wix_semibold</item>
-        <item name="android:textSize">16sp</item>
+        <item name="android:textSize">18sp</item>
+        <item name="android:textAllCaps">false</item>
+    </style>
+
+    <style name="SignupButton" parent="Widget.AppCompat.Button">
+        <item name="android:background">@drawable/signup_btn</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="android:fontFamily">@font/wix_semibold</item>
+        <item name="android:textSize">18sp</item>
         <item name="android:textAllCaps">false</item>
     </style>
 </resources>

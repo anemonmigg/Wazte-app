@@ -4,4 +4,5 @@
     <string name="login_username_not_found"><i>*Username does not exist.</i></string>
     <string name="login_password_incorrect"><i>*Password is incorrect.</i></string>
     <string name="signup_link"><u>Signup</u></string>
+    <string name="login_link"><u>Login</u></string>
 </resources>
