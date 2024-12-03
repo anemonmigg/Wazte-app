@@ -1,6 +1,7 @@
 package com.mobdeve.s20.gonzales.miguel.wazte
 
 import android.content.ContentValues.TAG
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.View
@@ -12,20 +13,23 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import androidx.lifecycle.lifecycleScope
 import com.google.firebase.Firebase
 import com.google.firebase.firestore.firestore
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.tasks.await
 
 class RegisterActivity : AppCompatActivity() {
-    lateinit var etSignupUsername:EditText
-    lateinit var  tvSignupUsernameError:TextView
-    lateinit var etSignupPhone:EditText
-    lateinit var tvSignupPhoneError:TextView
-    lateinit var etSignupPassword:EditText
-    lateinit var tvSignupPasswordError:TextView
-    lateinit var etSignupConfirm:EditText
-    lateinit var tvSignupConfirmError:TextView
-    lateinit var btnSignup:Button
-    lateinit var tvLogin:TextView
+    private lateinit var etSignupUsername:EditText
+    private lateinit var  tvSignupUsernameError:TextView
+    private lateinit var etSignupPhone:EditText
+    private lateinit var tvSignupPhoneError:TextView
+    private lateinit var etSignupPassword:EditText
+    private lateinit var tvSignupPasswordError:TextView
+    private lateinit var etSignupConfirm:EditText
+    private lateinit var tvSignupConfirmError:TextView
+    private lateinit var btnSignup:Button
+    private lateinit var tvLogin:TextView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -69,6 +73,11 @@ class RegisterActivity : AppCompatActivity() {
         for (error in errors) {
             error.visibility = View.INVISIBLE
         }
+
+        tvLogin.setOnClickListener{
+            finish()
+        }
+
         /*
         * Setup behavior of btnSignup, on click, the following occurs:
         * - Contents of EditText are validated
@@ -117,7 +126,8 @@ class RegisterActivity : AppCompatActivity() {
                 errors[2].visibility = View.INVISIBLE
             }
 
-            // TODO: Check if username already exists in DB
+            val username = inputs[0].text.toString()
+            val phoneNumber = inputs[1].text.toString()
 
             // If there are no errors, set error_flag to 0
             if(!containsEmptyInput(inputs) &&
@@ -131,25 +141,62 @@ class RegisterActivity : AppCompatActivity() {
                 return@setOnClickListener
             }
 
-            // Write data to DB
-            val db = Firebase.firestore
-            val user = hashMapOf(
-                "name" to inputs[0].text.toString(),
-                "phone_number" to inputs[1].text.toString(),
-                "password" to inputs[2].text.toString()
-            )
-            db.collection("users")
-                .add(user)
-                .addOnSuccessListener { documentReference ->
-                    Log.d(TAG, "DocumentSnapshot added with ID: ${documentReference.id}")
-                    Toast.makeText(this, "Data added", Toast.LENGTH_LONG).show()
+            lifecycleScope.launch {
+                val db = Firebase.firestore
+                try {
+                    val usernameQuery = db.collection("users")
+                        .whereEqualTo("name", username)
+                        .get()
+                        .await()
+
+                    if (!usernameQuery.isEmpty) {
+                        // Username already exists
+                        errors[0].text = getString(R.string.username_exists)
+                        errors[0].visibility = View.VISIBLE
+                        return@launch
+                    } else {
+                        errors[0].visibility = View.INVISIBLE
+                    }
+
+                    val phoneQuery = db.collection("users")
+                        .whereEqualTo("phone_number", phoneNumber)
+                        .get()
+                        .await()
+
+                    if (!phoneQuery.isEmpty) {
+                        // Phone number already exists
+                        errors[1].text = getString(R.string.phone_number_already_exists)
+                        errors[1].visibility = View.VISIBLE
+                        return@launch
+                    } else {
+                        errors[1].visibility = View.INVISIBLE
+                    }
+
+                    // Proceed with registration
+                    val user = hashMapOf(
+                        "name" to username,
+                        "phone_number" to phoneNumber,
+                        "password" to inputs[2].text.toString()
+                    )
+
+                    try {
+                        val result = db.collection("users").add(user).await()
+                        Log.d(TAG, "DocumentSnapshot added with ID: ${result.id}")
+                        Toast.makeText(this@RegisterActivity, "Registration successful", Toast.LENGTH_LONG).show()
+
+                        // Redirect to login activity
+                        val intent = Intent(this@RegisterActivity, LoginActivity::class.java)
+                        startActivity(intent)
+                        finish()
+                    } catch (e: Exception) {
+                        Log.w(TAG, "Error adding document", e)
+                        Toast.makeText(this@RegisterActivity, "Registration failed", Toast.LENGTH_LONG).show()
+                    }
+                } catch (e: Exception) {
+                    Log.e(TAG, "Error checking database for existing data", e)
+                    Toast.makeText(this@RegisterActivity, "Error checking database. Please try again.", Toast.LENGTH_LONG).show()
                 }
-                .addOnFailureListener { e ->
-                    Log.w(TAG, "Error adding document", e)
-                    Toast.makeText(this, "Data not added", Toast.LENGTH_LONG).show()
-                }
-            // Move to login activity
-            // finish()
+            }
         }
     }
 }
@@ -165,8 +212,5 @@ fun containsEmptyInput(inputs: Array<EditText>): Boolean {
 }
 
 fun passwordsMatch(password:String, confirmPassword:String): Boolean {
-    if (password == confirmPassword) {
-        return true
-    }
-    return false
+    return password == confirmPassword
 }

@@ -4,6 +4,7 @@
     <string name="password_too_short">*Password must be at least 8 characters long.</string>
     <string name="passwords_must_match"><i>*Passwords do not match.</i></string>
     <string name="username_exists"><i>*Username is already in use.</i></string>
+    <string name="phone_number_already_exists"><i>*Phone number already in use.</i></string>
     <string name="login_username_not_found"><i>*Username does not exist.</i></string>
     <string name="login_password_incorrect"><i>*Password is incorrect.</i></string>
     <string name="signup_link"><u>Signup</u></string>
