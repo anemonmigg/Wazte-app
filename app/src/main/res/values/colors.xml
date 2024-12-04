@@ -2,8 +2,19 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
-    <color name="color_main">#688426</color>
-    <color name="color_secondary">#B1B17D</color>
-    <color name="form_input_bg">#E1E1E1</color>
-    <color name="input_error">#FF0000</color>
+    <color name="color_main">#FF688426</color>
+    <color name="highlight_green">#FFB1B17D</color>
+    <color name="accent_brown">#FF9F6F50</color>
+    <color name="accent_purple">#FF9C466D</color>
+    <color name="button_green">#FF7C9A35</color>
+    <color name="button_red">#FFA51719</color>
+    <color name="light_gray">#FFBEBEBE</color>
+    <color name="dark_gray">#FF949494</color>
+    <color name="gray_font">#FF434343</color>
+    <color name="form_input_bg">#FFE1E1E1</color>
+    <color name="form_darker_gray">#FFDBDBDB</color>
+    <color name="input_error">#FFFF0000</color>
+    <color name="map_background">#FFF9F6E7</color>
+    <color name="map_route">#FFEEEBDD</color>
+    <color name="map_user_loc">#FF0068A8</color>
 </resources>
