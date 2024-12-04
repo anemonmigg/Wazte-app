@@ -24,7 +24,7 @@ class MainActivity : AppCompatActivity() {
         * Set up btnLogout behavior, on click, destroys main activity, and brings user back to login
         * screen.
         * */
-        btnLogout = findViewById(R.id.btnLogout)
+        btnLogout = findViewById(R.id.logoutBtn)
         btnLogout.setOnClickListener{
             finish()
         }
