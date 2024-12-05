@@ -142,61 +142,6 @@ class MainActivity : AppCompatActivity() {
         viewportPlugin.transitionTo(followPuckViewportState) { success ->
             // the transition has been completed with a flag indicating whether the transition succeeded
         }
-
-        // Access device location
-        val locationService : LocationService = LocationServiceFactory.getOrCreate()
-        var locationProvider: DeviceLocationProvider? = null
-
-        val request = LocationProviderRequest.Builder()
-            .interval(IntervalSettings.Builder().interval(0L).minimumInterval(0L).maximumInterval(0L).build())
-            .displacement(0F)
-            .accuracy(AccuracyLevel.HIGHEST)
-            .build();
-
-        val result = locationService.getDeviceLocationProvider(request)
-        if (result.isValue) {
-            locationProvider = result.value!!
-        } else {
-            // Log.error("Failed to get device location provider")
-        }
-
-
-        val locationObserver = object: LocationObserver {
-            override fun onLocationUpdateReceived(locations: MutableList<Location>) {
-                val loc = locations.first()
-                val long = loc.longitude
-                val lat = loc.latitude
-                Log.e(TAG, "Location update received: " + loc)
-                Log.e(TAG, "LAT: " + loc.latitude)
-                Log.e(TAG, "LONG: " + loc.longitude)
-
-                // Check if username is not null
-                if (username != null) {
-                    // Access Firestore
-                    val db = Firebase.firestore
-
-                    // Create an array with the new location data
-                    val userLocationArray = arrayListOf(lat, long)
-
-                    // Update Firestore document for the user with the username as the document ID
-                    db.collection("users")
-                        .document(username)  // Use the username as the document ID
-                        .update("lastPosition", userLocationArray)  // Store the array in "lastPosition" field
-                        .addOnSuccessListener {
-                            Log.d(TAG, "Location data successfully updated in Firestore!")
-                        }
-                        .addOnFailureListener { exception ->
-                            Log.e(TAG, "Error updating location: ", exception)
-                        }
-                } else {
-                    Log.e(TAG, "Username is null. Unable to update location.")
-                }
-            }
-        }
-
-        if (locationProvider != null) {
-            locationProvider.addLocationObserver(locationObserver)
-        }
     }
 
     override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<String>, grantResults: IntArray) {
