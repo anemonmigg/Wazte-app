@@ -58,7 +58,36 @@
         android:showDividers="middle"
         app:layout_constraintTop_toBottomOf="@+id/add_bin_banner">
 
+        <LinearLayout
+            android:id="@+id/attachmentLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center"
+            android:layout_marginTop="16dp"
+            android:padding="16dp"
+            app:layout_constraintTop_toBottomOf="@+id/etSearch">
 
+            <ImageButton
+                android:id="@+id/btnAttachImage"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:src="@drawable/notes"
+                android:scaleType="fitCenter"
+                android:background="@null"
+                android:contentDescription="Attach Image"
+                android:layout_marginEnd="16dp" />
+
+            <TextView
+                android:id="@+id/attachmentText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Attach an image here"
+                android:textColor="@color/black"
+                android:textSize="16sp"
+                android:fontFamily="@font/wixmadefortext_regular" />
+
+        </LinearLayout>
 
         <EditText
             android:id="@+id/etSearch"
@@ -168,6 +197,8 @@
             android:textSize="16sp" />
 
     </LinearLayout>
+
+
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

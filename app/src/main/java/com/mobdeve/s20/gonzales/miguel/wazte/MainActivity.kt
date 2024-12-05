@@ -1,6 +1,7 @@
 package com.mobdeve.s20.gonzales.miguel.wazte
 
 import android.content.ContentValues.TAG
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.widget.Button
@@ -118,6 +119,12 @@ class MainActivity : AppCompatActivity() {
             } else {
                 drawerLayout.openDrawer(GravityCompat.START)
             }
+        }
+
+        val reportBinButton: Button = findViewById(R.id.reportBinButton)
+        reportBinButton.setOnClickListener {
+            val intent = Intent(this, ReportSelectActivity::class.java)
+            startActivity(intent)
         }
 
         // Handle user permissions
