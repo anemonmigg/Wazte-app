@@ -15,7 +15,7 @@ import com.google.firebase.firestore.firestore
 
 class LoginActivity : AppCompatActivity() {
     lateinit var etLoginUsername:EditText
-    lateinit var tvLoginUsername:TextView
+    lateinit var tvLoginUsernameError:TextView
     lateinit var etLoginPassword:EditText
     lateinit var tvLoginPasswordError:TextView
     lateinit var btnLogin:Button
@@ -31,6 +31,17 @@ class LoginActivity : AppCompatActivity() {
             insets
         }
 
+        // Access views
+        etLoginUsername = findViewById(R.id.etLoginUsername)
+        etLoginPassword = findViewById(R.id.etLoginPassword)
+        tvLoginUsernameError = findViewById(R.id.tvLoginUsernameError)
+        tvLoginPasswordError = findViewById(R.id.tvLoginPasswordError)
+
+        // Initialize errors as invisible
+        var error_flag = 0 // if has a value of 1, that means there is an error
+        tvLoginUsernameError.visibility = View.INVISIBLE
+        tvLoginPasswordError.visibility = View.INVISIBLE
+
         /*
         * Setup btnLogin behavior, on click, does the following:
         * - Submits data in EditText to database, if there are errors, display errors in
@@ -38,10 +49,66 @@ class LoginActivity : AppCompatActivity() {
         * */
         btnLogin = findViewById(R.id.btnLogin)
         btnLogin.setOnClickListener {
-            // Move to MainActivity
 
-            val intent = Intent(this, MainActivity::class.java)
-            startActivity(intent)
+            // Check for empty inputs
+            if (etLoginUsername.text.toString().isEmpty()) {
+                error_flag = 1
+                tvLoginUsernameError.text = getString(R.string.field_cannot_be_empty)
+                tvLoginUsernameError.visibility = View.VISIBLE
+            }
+            else {
+                error_flag = 0
+                tvLoginUsernameError.visibility = View.INVISIBLE
+            }
+
+            if (etLoginPassword.text.toString().isEmpty()) {
+                error_flag = 1
+                tvLoginPasswordError.text = getString(R.string.field_cannot_be_empty)
+                tvLoginPasswordError.visibility = View.VISIBLE
+            }
+            else {
+                error_flag = 0
+                tvLoginPasswordError.visibility = View.INVISIBLE
+            }
+
+            // Query database for value under "username" to check if it exists, and if it does,
+            // check if password is correct
+            try {
+                val db = Firebase.firestore
+                db.collection("users")
+                    .whereEqualTo("name", etLoginUsername.text.toString())
+                    .get()
+                    .addOnSuccessListener { result ->
+                        if(result.isEmpty) {
+                            error_flag = 1
+                            tvLoginUsernameError.text = "Username does not exist."
+                            tvLoginUsernameError.visibility = View.VISIBLE
+                        }
+                        else {
+                            error_flag = 0
+                            tvLoginUsernameError.visibility = View.INVISIBLE
+                            for (document in result) {
+                                val storedPassword = document.getString("password")
+                                if (storedPassword != etLoginPassword.text.toString()) {
+                                    error_flag = 1
+                                    tvLoginPasswordError.text = "Password is incorrect."
+                                    tvLoginPasswordError.visibility = View.VISIBLE
+                                }
+                                else {
+                                    error_flag = 0
+                                    val intent = Intent(this, MainActivity::class.java)
+                                    startActivity(intent)
+                                }
+                            }
+                        }
+                    }
+                // Although naive, good enough for now
+                // Read entire database for username and password
+
+            }
+            catch (e:Error) {
+
+            }
         }
 
         /*
