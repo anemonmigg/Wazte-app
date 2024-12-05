@@ -1,5 +1,6 @@
 package com.mobdeve.s20.gonzales.miguel.wazte
 
+import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
 import android.widget.ImageButton
@@ -56,6 +57,16 @@ class MainActivity : AppCompatActivity() {
         val recyclerView = findViewById<RecyclerView>(R.id.locationRecyclerView)
         recyclerView.adapter = LocationAdapter(locations)
         recyclerView.layoutManager = LinearLayoutManager(this)
+
+        /*
+        Setup report bin button
+         */
+
+        val reportBinButton: Button = findViewById(R.id.reportBinButton)
+        reportBinButton.setOnClickListener {
+            val intent = Intent(this, ReportSelectActivity::class.java)
+            startActivity(intent)
+        }
 
         /*
         * Set up btnLogout behavior, on click, destroys main activity, and brings user back to login
