@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+        <!-- Header Section with background -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:background="@drawable/banner_gradient"
+            android:padding="16dp"
+            android:layout_marginBottom="24dp">
+
+            <TextView
+                android:id="@+id/recurringBinTitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Recurring Bin"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:gravity="center_horizontal"
+                android:textColor="@android:color/white" />
+        </LinearLayout>
+
+        <!-- Contact Information Section -->
+        <TextView
+            android:id="@+id/contactInfoLabel"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Contact Information"
+            android:textSize="14sp"
+        android:textStyle="bold"
+        android:layout_marginBottom="8dp" />
+
+        <EditText
+            android:id="@+id/fullNameInput"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Full Name"
+            android:background="@drawable/input_field_background"
+            android:padding="9dp"
+            android:layout_marginBottom="12dp" />
+
+        <EditText
+            android:id="@+id/contactNumberInput"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Contact Number"
+            android:background="@drawable/input_field_background"
+            android:padding="9dp"
+            android:inputType="phone"
+            android:layout_marginBottom="24dp" />
+
+        <!-- Address Section -->
+        <TextView
+            android:id="@+id/addressLabel"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Address"
+            android:textSize="14sp"
+        android:textStyle="bold"
+        android:layout_marginBottom="8dp" />
+
+        <EditText
+            android:id="@+id/regionInput"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Region, Province, City, Barangay"
+            android:background="@drawable/input_field_background"
+            android:padding="9dp"
+            android:layout_marginBottom="12dp" />
+
+        <EditText
+            android:id="@+id/postalCodeInput"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Postal Code"
+            android:background="@drawable/input_field_background"
+            android:padding="9dp"
+            android:inputType="number"
+            android:layout_marginBottom="12dp" />
+
+        <EditText
+            android:id="@+id/streetNameInput"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Street Name, Building, House No."
+            android:background="@drawable/input_field_background"
+            android:padding="9dp"
+            android:layout_marginBottom="12dp" />
+
+        <EditText
+            android:id="@+id/unitFloorInput"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Unit/Floor (if applicable)"
+            android:background="@drawable/input_field_background"
+            android:padding="9dp"
+            android:layout_marginBottom="24dp" />
+
+        <!-- Label and Repeat Section -->
+        <TextView
+            android:id="@+id/labelAsText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Label As:"
+            android:textSize="14sp"
+/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+>
+
+            <RadioButton
+                android:id="@+id/homeLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Home"
+                android:layout_marginEnd="16dp" />
+
+            <RadioButton
+                android:id="@+id/officeLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Office" />
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:layout_marginBottom="16dp">
+
+            <TextView
+                android:id="@+id/repeatLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Repeat:"
+                android:textSize="16sp"
+                android:layout_marginEnd="16dp" />
+
+            <Spinner
+                android:id="@+id/repeatDropdown"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@drawable/input_field_background" />
+        </LinearLayout>
+
+
+        <!-- Buttons -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center"
+            android:layout_marginTop="16dp">
+
+            <Button
+                android:id="@+id/cancelButton"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_marginEnd="8dp"
+                android:text="Cancel"
+                android:backgroundTint="@android:color/holo_red_dark"
+                android:textColor="@android:color/white" />
+
+            <Button
+                android:id="@+id/applyButton"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_marginStart="8dp"
+                android:text="Apply"
+                android:backgroundTint="@android:color/holo_green_dark"
+                android:textColor="@android:color/white" />
+        </LinearLayout>
+
+    </LinearLayout>
+</ScrollView>

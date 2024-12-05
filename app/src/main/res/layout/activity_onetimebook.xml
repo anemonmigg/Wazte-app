@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <!-- Map Background -->
+    <ImageView
+        android:id="@+id/mapBackground"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:src="@drawable/map_placeholder"
+        android:scaleType="fitXY"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/routeConfirmationCard" />
+
+    <!-- Hamburger Menu Button -->
+    <ImageButton
+        android:id="@+id/hamburgerButton"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:backgroundTint="@color/color_main"
+        android:src="@drawable/hamburger_icon"
+        android:scaleType="fitCenter"
+        android:contentDescription="@string/menu"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <!-- Bin Location Icon -->
+    <ImageView
+        android:id="@+id/binIcon"
+        android:layout_width="180dp"
+        android:layout_height="180dp"
+        android:src="@drawable/streetmap"
+        app:layout_constraintBottom_toTopOf="@id/routeConfirmationCard"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintVertical_bias="0.3" />
+
+    <!-- Route Confirmation Card -->
+    <androidx.cardview.widget.CardView
+        android:id="@+id/routeConfirmationCard"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        app:cardCornerRadius="16dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="16dp"
+            android:gravity="center_vertical">
+
+            <!-- Address Section -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginBottom="8dp"
+                android:gravity="center_vertical">
+
+                <ImageView
+                    android:id="@+id/addressIcon"
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:layout_marginEnd="8dp"
+                    android:src="@drawable/recycle_bag"
+                    android:contentDescription="@string/address_icon" />
+
+                <TextView
+                    android:id="@+id/addressText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="28 Camachile"
+                    android:textColor="@android:color/black"
+                    android:textSize="16sp"
+                    android:fontFamily="@font/wix_semibold" />
+            </LinearLayout>
+
+            <!-- Phone Number Section -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginBottom="8dp"
+                android:gravity="center_vertical">
+
+                <ImageView
+                    android:id="@+id/phoneIcon"
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:layout_marginEnd="8dp"
+                    android:src="@drawable/call"
+                    android:contentDescription="@string/phone_icon" />
+
+                <TextView
+                    android:id="@+id/phoneNumberText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="0981 344 0302"
+                    android:textColor="@android:color/black"
+                    android:textSize="16sp"
+                    android:fontFamily="@font/wix_semibold" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:layout_marginBottom="8dp">
+
+                <!-- One-Time Bin Section -->
+                <TextView
+                    android:id="@+id/oneTimeBinText"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:text="One-Time Bin"
+                    android:textColor="@android:color/holo_green_dark"
+                    android:textSize="16sp"
+                    android:fontFamily="@font/wix_semibold"
+                    android:layout_weight="1"
+                    android:gravity="start"/>
+
+                <!-- Separator -->
+                <View
+                    android:layout_width="1dp"
+                    android:layout_height="30dp"
+                    android:background="@android:color/darker_gray"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginEnd="8dp"/>
+
+                <!-- Notes Section -->
+                <ImageView
+                    android:id="@+id/notesIcon"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:src="@drawable/notes"
+                    android:contentDescription="@string/notes_icon"
+                    android:layout_gravity="end" />
+
+                <TextView
+                    android:id="@+id/oneTimeBinText"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:text=" Notes"
+                    android:textColor="@android:color/holo_green_dark"
+                    android:textSize="16sp"
+                    android:fontFamily="@font/wix_semibold"
+                    android:layout_weight="1"
+                    android:gravity="start"/>
+
+
+            </LinearLayout>
+
+
+
+
+            <!-- Confirm Button -->
+            <Button
+                android:id="@+id/confirmButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:backgroundTint="@android:color/holo_green_dark"
+                android:text="Confirm"
+                android:textColor="@android:color/white"
+                android:fontFamily="@font/wix_semibold" />
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

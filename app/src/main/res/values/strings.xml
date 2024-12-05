@@ -9,4 +9,10 @@
     <string name="login_password_incorrect"><i>*Password is incorrect.</i></string>
     <string name="signup_link"><u>Signup</u></string>
     <string name="login_link"><u>Login</u></string>
+
+    <string-array name="repeat_options">
+        <item>Weekly</item>
+        <item>Bi-weekly</item>
+        <item>Monthly</item>
+    </string-array>
 </resources>
