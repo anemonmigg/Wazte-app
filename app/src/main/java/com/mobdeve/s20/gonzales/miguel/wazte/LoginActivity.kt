@@ -81,7 +81,7 @@ class LoginActivity : AppCompatActivity() {
                     .addOnSuccessListener { result ->
                         if(result.isEmpty) {
                             error_flag = 1
-                            tvLoginUsernameError.text = "Username does not exist."
+                            tvLoginUsernameError.text = getString(R.string.login_username_not_found)
                             tvLoginUsernameError.visibility = View.VISIBLE
                         }
                         else {
@@ -91,7 +91,7 @@ class LoginActivity : AppCompatActivity() {
                                 val storedPassword = document.getString("password")
                                 if (storedPassword != etLoginPassword.text.toString()) {
                                     error_flag = 1
-                                    tvLoginPasswordError.text = "Password is incorrect."
+                                    tvLoginPasswordError.text = getString(R.string.login_password_incorrect)
                                     tvLoginPasswordError.visibility = View.VISIBLE
                                 }
                                 else {
