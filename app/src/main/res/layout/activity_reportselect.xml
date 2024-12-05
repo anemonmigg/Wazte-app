@@ -6,8 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:clipChildren="false"
-    android:clipToPadding="false"
-    tools:context=".AddBinActivity">
+    android:clipToPadding="false">
 
     <LinearLayout
         android:id="@+id/add_bin_banner"
@@ -28,7 +27,7 @@
         android:paddingHorizontal="30dp"
         android:paddingVertical="10dp"
         android:showDividers="middle"
-        >
+        tools:ignore="MissingConstraints">
 
         <LinearLayout
             android:layout_width="wrap_content"
@@ -72,7 +71,7 @@
                     android:layout_width="47dp"
                     android:layout_height="50dp"
                     android:layout_gravity="left"
-                    android:src="@drawable/trash_bin" />
+                    android:src="@drawable/spin" />
                 <TextView
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
@@ -92,7 +91,7 @@
                 <ImageView
                     android:layout_width="50dp"
                     android:layout_height="50dp"
-                    android:src="@drawable/one_time_bin_icon" />
+                    android:src="@drawable/gps" />
                 <TextView
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
@@ -111,10 +110,12 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="45dp"
-            android:background="@color/color_main"
+            android:backgroundTint="#dd0000"
             android:padding="16dp"
             android:text="Cancel"
             android:textColor="#FFFFFF"
             android:textSize="16sp" />
 
     </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

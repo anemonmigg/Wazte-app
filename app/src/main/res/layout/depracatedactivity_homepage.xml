@@ -35,8 +35,10 @@
             android:layout_height="48dp"
             android:backgroundTint="@color/color_main"
             android:src="@drawable/hamburger_icon"
+            android:scaleType="fitCenter"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            android:contentDescription="burger" />
 
         <!-- Truck Approaching Banner -->
         <androidx.cardview.widget.CardView

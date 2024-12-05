@@ -11,7 +11,7 @@
         android:id="@+id/mapBackground"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:src="@drawable/map_placeholder"
+        android:src="@drawable/banner_gradient"
         android:scaleType="fitXY"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -28,15 +28,15 @@
         android:backgroundTint="@color/color_main"
         android:src="@drawable/hamburger_icon"
         android:scaleType="fitCenter"
-        android:contentDescription="@string/menu"
+        android:contentDescription="burger"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <!-- Bin Location Icon -->
     <ImageView
         android:id="@+id/binIcon"
-        android:layout_width="180dp"
-        android:layout_height="180dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         android:src="@drawable/streetmap"
         app:layout_constraintBottom_toTopOf="@id/routeConfirmationCard"
         app:layout_constraintEnd_toEndOf="parent"
@@ -75,8 +75,8 @@
                     android:layout_width="24dp"
                     android:layout_height="24dp"
                     android:layout_marginEnd="8dp"
-                    android:src="@drawable/recycle_bag"
-                    android:contentDescription="@string/address_icon" />
+                    android:src="@drawable/gps"
+                    android:contentDescription="address" />
 
                 <TextView
                     android:id="@+id/addressText"
@@ -102,7 +102,7 @@
                     android:layout_height="24dp"
                     android:layout_marginEnd="8dp"
                     android:src="@drawable/call"
-                    android:contentDescription="@string/phone_icon" />
+                    android:contentDescription="help" />
 
                 <TextView
                     android:id="@+id/phoneNumberText"
@@ -123,7 +123,7 @@
 
                 <!-- One-Time Bin Section -->
                 <TextView
-                    android:id="@+id/oneTimeBinText"
+                    android:id="@+id/BinText"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:text="One-Time Bin"
@@ -147,7 +147,7 @@
                     android:layout_width="30dp"
                     android:layout_height="30dp"
                     android:src="@drawable/notes"
-                    android:contentDescription="@string/notes_icon"
+                    android:contentDescription="help"
                     android:layout_gravity="end" />
 
                 <TextView
