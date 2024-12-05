@@ -9,6 +9,8 @@ import androidx.core.view.GravityCompat
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.drawerlayout.widget.DrawerLayout
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 
 class MainActivity : AppCompatActivity() {
     lateinit var btnLogout:Button
@@ -45,6 +47,15 @@ class MainActivity : AppCompatActivity() {
                 drawerLayout.openDrawer(GravityCompat.START)
             }
         }
+
+        // display next location and distance of truck
+        val locations = listOf(
+            LocationAdapter.Location("Camatchile St.", "2km"),
+            LocationAdapter.Location("Andrew St.", "10km")
+        )
+        val recyclerView = findViewById<RecyclerView>(R.id.locationRecyclerView)
+        recyclerView.adapter = LocationAdapter(locations)
+        recyclerView.layoutManager = LinearLayoutManager(this)
 
         /*
         * Set up btnLogout behavior, on click, destroys main activity, and brings user back to login
