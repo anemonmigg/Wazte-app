@@ -50,5 +50,5 @@ dependencies {
 
     implementation(platform("com.google.firebase:firebase-bom:33.6.0"))
     implementation("com.google.firebase:firebase-firestore")
-
+    implementation("com.mapbox.maps:android:11.8.1")
 }
