@@ -96,7 +96,10 @@ class LoginActivity : AppCompatActivity() {
                                 }
                                 else {
                                     error_flag = 0
+                                    // Inside the success block when the password is correct
                                     val intent = Intent(this, MainActivity::class.java)
+                                    // Pass the username as an extra in the Intent
+                                    intent.putExtra("username", etLoginUsername.text.toString())
                                     startActivity(intent)
                                 }
                             }

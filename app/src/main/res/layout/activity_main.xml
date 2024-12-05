@@ -168,13 +168,13 @@
                             android:id="@+id/distanceBottomText"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Distance"
+                            android:text="User"
                             android:textColor="@android:color/darker_gray"
                             android:layout_marginBottom="4dp"
                             android:fontFamily="@font/wix_semibold" />
 
                         <TextView
-                            android:id="@+id/distanceValue"
+                            android:id="@+id/tvUserName"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="12 km"
@@ -203,10 +203,10 @@
                             android:fontFamily="@font/wix_semibold" />
 
                         <TextView
-                            android:id="@+id/pickupScheduleText"
+                            android:id="@+id/tvPickupCount"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="TODAY"
+                            android:text="0"
                             android:textSize="18sp"
                             android:textColor="@android:color/black"
                             android:textStyle="bold"

@@ -176,7 +176,8 @@ class RegisterActivity : AppCompatActivity() {
                     val user = hashMapOf(
                         "name" to username,
                         "phone_number" to phoneNumber,
-                        "password" to inputs[2].text.toString()
+                        "password" to inputs[2].text.toString(),
+                        "trashCount" to 0
                     )
 
                     try {
