@@ -55,6 +55,7 @@
 
 
         <LinearLayout
+            android:id="@+id/recurring_bin_selector"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:divider="@drawable/divider_small"
@@ -85,6 +86,7 @@
             </LinearLayout>
 
             <LinearLayout
+                android:id="@+id/onetime_bin_selector"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
